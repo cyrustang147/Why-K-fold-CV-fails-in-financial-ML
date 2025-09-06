@@ -49,13 +49,16 @@ print("\nMean CV loss:", np.mean(val_losses))
 
 * `model_demos.ipynb` -  A notebook that generates returns, runs in-sample training, K-fold CV, and out-of-sample evaluation; also generates plots.
 
-In the notebook, we generate an array of 10000 returns. The following plot shows the simulation results.
-
+In the notebook, we generate an array of 10000 returns. The following plot shows the simulation results with regime changes.
+![Showcase 1](plots/plot1.png)
 
 We then fit the first 404 data to the model. The training error is in line with the variance of noise, $0.03^2$, showing that the model memorised the local regime.
 
+![Showcase 2](plots/plot2.png)
 
 We also performed K-fold CV and a holdout test. CV error is very low as well, but the OOS error is terribly high.
+
+<img src="https://github.com/cyrustang147/Why-K-fold-CV-fails-in-financial-ML/blob/main/plots/table1.png" width="480">
 
 
 Typical behaviour you should observe:
