@@ -87,10 +87,11 @@ def flawed_model(input_dim: int, learning_rate: float = 1e-4):
 # K-fold cross-validation (contiguous blocks)
 # -----------------------------
 
-def Kfold(X, Y, n_splits: int = 2):
+def kfold_cv(X, Y, n_splits: int = 2):
     """
     Implement a k-fold CV for our flawed_model.
     - n_splits: number of groups (k)
+    Return a list of the fold's loss
     """
 
     kf = KFold(n_splits=n_splits, shuffle=False)  # contiguous blocks (no shuffle)
