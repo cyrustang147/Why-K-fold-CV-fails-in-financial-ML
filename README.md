@@ -18,7 +18,7 @@ López de Prado points out two main reasons K-fold fails in finance:
 
 * `arreturn()` — regime-switching AR(2) simulator.
 * `features_label()` - builder that turns returns → lag features and labels.
-* `flawed_model()` - A neural network to model future returns using past returns. Intentionally to be overfitting.
+* `flawed_model()` - A neural network to model future returns using past returns. The default model has 225 parameters, intentionally to overfit.
 * `kfold_cv()` - An implementation of k-fold CV for the flawed_model 
 
 ## Usage
