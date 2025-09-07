@@ -13,6 +13,8 @@ López de Prado points out two main reasons K-fold fails in finance:
 * Our return generator is based on an AR(2) process whose parameters switch slowly and randomly over time. As these parameters remain locally stable, the process is predictable in the short term (near the training data) but becomes unpredictable in the long term (far into the future). This captures the non-IID nature of financial data.
 * Our Keras model trained with access to *both past and future* return data, causing some training data to be reused in validation. This demonstrates the second point above.
 
+See `explaination&results.md` for more explanation.
+
 ## Project structure
 
 ### `model.py`
@@ -26,7 +28,7 @@ López de Prado points out two main reasons K-fold fails in finance:
 
 * A notebook that generates returns, runs in-sample training, K-fold CV, and out-of-sample evaluation; also generates plots.
 
-### `demo_results.md`
+### `explaination&results.md`
 
 * A markdown that stores and explains all the outputs from the demo notebook.
 
