@@ -11,7 +11,6 @@ López de Prado points out two main reasons K-fold fails in finance:
 2. **Repeated testing/model selection bias** (re-using the same set of data in both training and validation).
 
 * Our return generator is based on an AR(2) process whose parameters switch slowly and randomly over time. As these parameters remain locally stable, the process is predictable in the short term (near the training data) but becomes unpredictable in the long term (far into the future). This captures the non-IID nature of financial data.
-* In practice, financial markets often behave the same way. For example, through regime shifts such as bull and bear markets, where dynamics are stable within a regime but change abruptly when the regime shifts.
 * Our Keras model trained with access to *both past and future* return data, causing some training data to be reused in validation. This demonstrates the second point above.
 
 ## Project structure
