@@ -87,11 +87,10 @@ def flawed_model(input_dim: int, learning_rate: float = 1e-4):
 # K-fold cross-validation (contiguous blocks)
 # -----------------------------
 
-def kfold_cv(X, Y, n_splits: int = 2):
+def kfold_cv(X, Y, n_splits: int = 20, learning_rate: float = 1e-4, epochs: int = 100):
     """
     Implement a k-fold CV for our flawed_model.
     - n_splits: number of groups (k)
-    Return a list of the fold's loss
     """
 
     kf = KFold(n_splits=n_splits, shuffle=False)  # contiguous blocks (no shuffle)
@@ -106,12 +105,12 @@ def kfold_cv(X, Y, n_splits: int = 2):
         keras.backend.clear_session()
 
         # fresh model each fold
-        model = flawed_model(X.shape[1])
+        model = flawed_model(X.shape[1], learning_rate = learning_rate)
 
         # fit on fold's training set
         history = model.fit(
             X_train, y_train,
-            epochs=100,
+            epochs=epochs,
             batch_size=16,
             verbose=0
         )
