@@ -2,7 +2,9 @@ In `model_demos.ipynb`, we demonstrated why k-fold CV fails with both synthetic 
 
 ## Synthetic Data
 
-We generate an array of 10000 returns based on an AR(2) process whose parameters switch between (0.5, 0.5), (-0.5, 0.5), (0.5, -0.5), and (-0.5, -0.5). We intentionally set some of them to be slightly non-stationary to create dynamics. The default average regime length is 500. The following plot shows the simulation results with regime changes.
+We generate an array of 10000 returns based on an AR(2) process whose parameters randomly switch between (0.5, 0.5), (-0.5, 0.5), (0.5, -0.5), and (-0.5, -0.5). We intentionally set some of them to be slightly non-stationary to create dynamics. The regime length follows a geometric distribution, with a default average length is 500. 
+
+In practice, financial markets often behave the same way. For example, through regime shifts such as bull and bear markets, where dynamics are stable within a regime but change abruptly when the regime shifts. The following plot shows the simulation results with regime changes.
 ![Showcase 1](plots/plot1.png)
 
 For an event at time $t$, we try to predict the return at time $t+1$ with the $q$ previous returns ($r_t, r_{t-1},...$). In this case, we set $q=4$.
