@@ -23,7 +23,7 @@ We pull out the last 25-year S&P 500 closing prices from Yahoo Finance. Here is 
 
 ![Showcase 3](plots/plot3.png)
 
-Real-life data is a bit more complex than our simulated data, so we increased $q$ from $4$ to $6$ and changed the learning rate from $1e-4$ to $2e-3$. We did not fine-tune these hyperparameters. The training set has 206 return data (206 observations)
+Real-life data is a bit more complex than our simulated data, so we increased $q$ from $4$ to $6$ and changed the learning rate from $1e-4$ to $2e-3$. We did not fine-tune these hyperparameters. The training set has 206 return data (206 observations), and here is the convergence of training loss.
 
 ![Showcase 4](plots/plot4.png)
 
