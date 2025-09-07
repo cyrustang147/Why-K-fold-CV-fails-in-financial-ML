@@ -13,14 +13,23 @@ López de Prado points out two main reasons K-fold fails in finance:
 * Our return generator is based on an AR(2) process whose parameters switch slowly and randomly over time. As these parameters remain locally stable, the process is predictable in the short term (near the training data) but becomes unpredictable in the long term (far into the future). This captures the non-IID nature of financial data.
 * In practice, financial markets often behave the same way. For example, through regime shifts such as bull and bear markets, where dynamics are stable within a regime but change abruptly when the regime shifts.
 * Our Keras model trained with access to *both past and future* return data, causing some training data to be reused in validation. This demonstrates the second point above.
-* This repo contains: simulator, feature builder, Keras model, K-fold CV loop, and holdout test. 
 
-## Functions in `model.py`
+## Project structure
+
+### `model.py`
 
 * `arreturn()` — regime-switching AR(2) simulator.
 * `features_label()` - builder that turns returns → lag features and labels.
 * `flawed_model()` - A neural network to model future returns using past returns. The default model has 225 parameters, intentionally to overfit.
-* `kfold_cv()` - An implementation of k-fold CV for the flawed_model 
+* `kfold_cv()` - An implementation of k-fold CV for the flawed_model
+
+### `model_demos.ipynb` 
+
+* A notebook that generates returns, runs in-sample training, K-fold CV, and out-of-sample evaluation; also generates plots.
+
+### `demo_results.md`
+
+* A markdown that stores and explains all the outputs from the demo notebook.
 
 ## Usage
 
@@ -46,23 +55,11 @@ print("\nMean CV loss:", np.mean(val_losses))
 ```
 
 
-## Demo and Typical Results
-
-* `model_demos.ipynb` -  A notebook that generates returns, runs in-sample training, K-fold CV, and out-of-sample evaluation; also generates plots.
-
-In the notebook, we generate an array of 10000 returns. The following plot shows the simulation results with regime changes.
-![Showcase 1](plots/plot1.png)
-
-We then fit the first 404 data to the model. The training error is in line with the variance of noise, $0.03^2$, showing that the model memorised the local regime.
-
-![Showcase 2](plots/plot2.png)
-
-We also performed K-fold CV and a holdout test. CV error is very low as well, but the OOS error is terribly high.
-
-<img src="https://github.com/cyrustang147/Why-K-fold-CV-fails-in-financial-ML/blob/main/plots/table1.png" width="480">
-
+## Typical Results
 
 Typical behaviour you should observe:
+
+<img src="https://github.com/cyrustang147/Why-K-fold-CV-fails-in-financial-ML/blob/main/plots/table1.png" width="480">
 
 * **Low training loss** (model can fit in-sample).
 * **K-fold mean CV loss** often low (appears optimistic).
